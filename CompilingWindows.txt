@@ -1,0 +1,28 @@
+== Git
+
+Download and install MSYS GIT: 
+
+  http://code.google.com/p/msysgit/downloads/list
+
+Download and install TortoiseGIT: 
+
+  http://code.google.com/p/tortoisegit/downloads/list
+
+Download and install VS Git Source Control Provider: 
+
+  http://gitscc.codeplex.com/releases/view/46589
+
+== CMake
+
+Download and install CMake:
+ 
+  http://www.cmake.org/cmake/resources/software.html
+
+== Libraries
+
+Download and unpack OGRE SDK:
+
+  http://www.ogre3d.org/download/sdk
+
+  Unpack to C:/Libs
+
