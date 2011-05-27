@@ -24,5 +24,10 @@ Download and unpack OGRE SDK:
 
   http://www.ogre3d.org/download/sdk
 
-  Unpack to C:/Libs
+  Unpack to: C:\Libs
 
+Download and install LuaForWindows:
+
+  http://code.google.com/p/luaforwindows/downloads/list
+
+  Installation directory: C:\Program Files\Lua\5.1
