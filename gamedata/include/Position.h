@@ -40,6 +40,11 @@ public:
 	Position operator - (const Vector & v) const {
 		return Position( x - v.x, y - v.y, z - v.z );
 	}
+
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version) {
+        ar & x & y & z;
+    }
 public:
 	Coord x,y,z;
 };
