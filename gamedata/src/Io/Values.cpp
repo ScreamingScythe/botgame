@@ -20,10 +20,6 @@ class Value::Data: public RefCountObject {
 public:
 	virtual ~Data() {
 	}
-
-	bool isShared() const {
-		return getRefCount() > 1;
-	}
 };
 
 class NumberData: public Value::Data {
@@ -118,6 +114,40 @@ List & List::operator =(const List & value) {
 	data->addRef();
 
 	return *this;
+}
+
+Size List::size() const {
+	return data ? data->value.size() : 0;
+}
+
+Value List::get(Size index) const {
+	return index < size() ? data->value.at(index) : Value();
+}
+
+void List::prepareWrite() {
+	if (!data) {
+		data = new Data();
+		data->addRef();
+	} else if (data->getRefCount() > 1) {
+		data->release();
+		data = new Data(*data);
+		data->addRef();
+	}
+}
+
+void List::add(Value value) {
+	prepareWrite();
+	data->value.push_back(value);
+}
+
+void List::insert(Size index, Value value) {
+	prepareWrite();
+	data->value.insert(data->value.begin() + index, value);
+}
+
+void List::remove(Size index) {
+	prepareWrite();
+	data->value.erase(data->value.begin() + index);
 }
 
 // Map class

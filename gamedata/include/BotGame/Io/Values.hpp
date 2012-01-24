@@ -13,6 +13,7 @@
 namespace BotGame {
 namespace Io {
 
+typedef unsigned int Size;
 typedef std::string String;
 typedef double Number;
 class List;
@@ -59,6 +60,33 @@ public:
 	 * Implicit conversion to value
 	 */
 	operator Value();
+
+	/**
+	 * Get count o elements in list
+	 */
+	Size size() const;
+
+	/**
+	 * Get element in list by index
+	 */
+	Value get(Size index) const;
+
+	/**
+	 * Add element to the end of list
+	 */
+	void add(Value value);
+
+	/**
+	 * Insert element into list with given index
+	 */
+	void insert(Size index, Value value);
+
+	/**
+	 * Remove element with given index
+	 */
+	void remove(Size index);
+private:
+	void prepareWrite();
 private:
 	Data * data;
 };
@@ -78,6 +106,13 @@ public:
 	 * Implicit conversion to value
 	 */
 	operator Value();
+
+	/**
+	 * Get count of pairs in map
+	 */
+	Size size();
+private:
+	void prepareWrite();
 private:
 	Data * data;
 };
