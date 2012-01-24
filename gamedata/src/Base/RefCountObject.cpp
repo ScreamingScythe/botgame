@@ -9,23 +9,34 @@
 
 #include <stdexcept>
 
-namespace BotGame { namespace Base {
+namespace BotGame {
+namespace Base {
 
-RefCountObject::RefCountObject() : refCount(0) {}
-RefCountObject::~RefCountObject() {}
+RefCountObject::RefCountObject() :
+		refCount(0) {
+}
+RefCountObject::~RefCountObject() {
+}
 
 void RefCountObject::addRef() const {
-	++ refCount;
+	if (!this)
+		return;
+
+	++refCount;
 }
 
 void RefCountObject::release() const {
-	-- refCount;
+	if (!this)
+		return;
 
-	if ( refCount < 0 ) {
-		throw std::logic_error( "Negative reference count" );
-	} else if ( refCount == 0 ) {
+	--refCount;
+
+	if (refCount < 0) {
+		throw std::logic_error("Negative reference count");
+	} else if (refCount == 0) {
 		delete this;
 	}
 }
 
-} } // BotGame::Base
+}
+} // BotGame::Base
