@@ -24,6 +24,13 @@ public:
 	 * Decrease reference counter by one. If it become 0 destroy object.
 	 */
 	void release() const;
+
+	/**
+	 * Get reference counter value
+	 */
+	int getRefCount() const {
+		return refCount;
+	}
 private:
 	mutable int refCount;
 };
