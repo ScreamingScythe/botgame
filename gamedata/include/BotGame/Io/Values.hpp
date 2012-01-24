@@ -26,9 +26,17 @@ public:
 	Value();
 	Value(Data * data);
 	Value(const Value & value);
+	Value(Number num);
+	Value(const char * str);
+	Value(const String & str);
+	Value(const List & list);
+	Value(const Map & map);
 	~Value();
 
 	Value & operator =(const Value & value);
+	Value & operator =(const char * str) {
+		return (*this) = String(str);
+	}
 
 	bool isNumber() const;
 	bool isString() const;
@@ -36,10 +44,10 @@ public:
 	bool isMap() const;
 	bool isNull() const;
 
-	Number asNumber();
-	String asString();
-	List asList();
-	Map asMap();
+	Number asNumber() const;
+	String asString() const;
+	List asList() const;
+	Map asMap() const;
 
 private:
 	Data * data;
@@ -59,7 +67,9 @@ public:
 	/**
 	 * Implicit conversion to value
 	 */
-	operator Value();
+	operator Value() const {
+		return Value(*this);
+	}
 
 	/**
 	 * Get count o elements in list
@@ -89,6 +99,8 @@ private:
 	void prepareWrite();
 private:
 	Data * data;
+
+	friend class Value;
 };
 
 class Map {
@@ -105,16 +117,35 @@ public:
 	/**
 	 * Implicit conversion to value
 	 */
-	operator Value();
+	operator Value() const {
+		return Value(*this);
+	}
 
 	/**
 	 * Get count of pairs in map
 	 */
-	Size size();
+	Size size() const;
+
+	/**
+	 * Get element in map by key
+	 */
+	Value get(String key) const;
+
+	/**
+	 * Put key-value pair to map
+	 */
+	void put(String key, Value value);
+
+	/**
+	 * Remove element with given key
+	 */
+	void remove(String key);
 private:
 	void prepareWrite();
 private:
 	Data * data;
+
+	friend class Value;
 };
 
 }
