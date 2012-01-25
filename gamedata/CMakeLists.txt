@@ -10,12 +10,12 @@ include_directories( include src ${Boost_INCLUDE_DIR} )
 
 set(GAMEDATA_SOURCES
     src/Base/RefCountObject.cpp
-    src/Io/Values.cpp
     src/Object.cpp
     src/World.cpp
+    src/Value.cpp
 )
 
 add_library(gamedata SHARED ${GAMEDATA_SOURCES})
 
-add_executable(gamedata-io-values-test src/Io/ValuesTest.cpp)
-target_link_libraries(gamedata-io-values-test gamedata)
+add_executable(gamedata-value-test src/ValueTest.cpp)
+target_link_libraries(gamedata-value-test gamedata)
