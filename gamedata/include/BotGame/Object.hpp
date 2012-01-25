@@ -18,7 +18,7 @@ public:
 	virtual ~Object();
 
 	virtual void setProperty(const String & name, const Value & value);
-	virtual const Value & getProperty(const String & name) const;
+	virtual Value getProperty(const String & name) const;
 
 private:
 	Hash properties;

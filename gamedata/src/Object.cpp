@@ -12,7 +12,7 @@ void Object::setProperty(const String & name, const Value & value) {
 	properties[name] = value;
 }
 
-const Value & Object::getProperty(const String & name) const {
+Value Object::getProperty(const String & name) const {
 	Hash::const_iterator it = properties.find(name);
 
 	if (it == properties.end())

@@ -21,6 +21,10 @@ public:
 			x(x), y(y), z(z) {
 	}
 
+	bool operator == (const Position & p) const {
+		return x == p.x && y == p.y && z == p.z;
+	}
+
 	Position & operator +=(const Vector & v) {
 		x += v.x;
 		y += v.y;
