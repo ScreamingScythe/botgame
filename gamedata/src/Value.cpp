@@ -13,6 +13,8 @@
 
 namespace BotGame {
 
+Value Value::undefined;
+
 // Value data
 
 class Value::Data: public Base::RefCountObject {

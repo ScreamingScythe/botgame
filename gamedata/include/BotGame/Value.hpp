@@ -35,6 +35,8 @@ private:
 	template<typename T>
 	class PtrData;
 public:
+	static Value undefined;
+public:
 	Value();
 	Value(Data * data);
 	Value(const Value & value);
