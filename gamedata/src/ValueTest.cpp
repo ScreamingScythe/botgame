@@ -1,4 +1,7 @@
 #include <BotGame/Value.hpp>
+#include <BotGame/Vector.hpp>
+#include <BotGame/Position.hpp>
+
 #include <iostream>
 
 using namespace BotGame;
@@ -57,6 +60,18 @@ int main() {
 	assert(m.find("bb") == m.end());
 	assert(a.isHash());
 	assert(a.asHash().size() == 2);
+
+	a = Value(Vector(1,-1,2));
+
+	assert(a.type() == Value::VECTOR);
+	assert(a.isVector());
+	assert(a);
+
+	a = Value(Position(1,-1,2));
+
+	assert(a.type() == Value::POSITION);
+	assert(a.isPosition());
+	assert(a);
 
 	std::cout << "Success!" << std::endl;
 
