@@ -65,12 +65,14 @@ int main() {
 
 	assert(a.type() == Value::VECTOR);
 	assert(a.isVector());
+	assert(a.asVector().y == -1);
 	assert(a);
 
 	a = Value(Position(1,-1,2));
 
 	assert(a.type() == Value::POSITION);
 	assert(a.isPosition());
+	assert(a.asPosition().x == 1);
 	assert(a);
 
 	std::cout << "Success!" << std::endl;
